@@ -1,0 +1,29 @@
+[project]
+name = "rpilcd"
+version = "0.1.0"
+description = "este libreria es para el manejo de las lcd display en las raspberry pi"
+authors = [
+    {name = "Esteban",email = "herrerazanecheverry@gmail.com"}
+]
+license = {text = "LGPL"}
+readme = "README.md"
+requires-python = ">=3.10"
+packages = [{ include = "src", from = "." }]
+dependencies = [
+    "smbus (>=1.1.post2,<2.0)",
+    "rpi-gpio (>=0.7.1,<0.8.0)"
+]
+
+[tool.poetry.scripts]
+test = "pytest:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0"
+pytest-cov = "^4.0"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0", "setuptools", "wheel"] 
+build-backend = ["poetry.core.masonry.api", "setuptools.build_meta"]
