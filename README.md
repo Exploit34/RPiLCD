@@ -1,4 +1,5 @@
 # RPiLCD
+
 [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/Exploit34/RPiLCD)
 
 🐍📟 RPiLCD is a Python library for controlling LCD character displays on the Raspberry Pi. It's designed to be easy, flexible, and compatible with I2C interfaces, making it perfect for your hardware projects.
