@@ -1,4 +1,4 @@
-from RPiLCD import I2C
+from LCDRPi import I2C
 from time import sleep
 
 lcd = I2C(address=0x27, width=16, rows=2)

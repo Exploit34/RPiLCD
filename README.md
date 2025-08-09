@@ -16,7 +16,9 @@
 You can install the library using pip:
 
 ```bash
-pip install rpilcd
+pip install LCDRPi
+
+poetry install
 ```
 
 The library depends on `smbus` for I2C communication and `RPi.GPIO` for pin control. These will be installed automatically.

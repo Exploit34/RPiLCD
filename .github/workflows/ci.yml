@@ -1,19 +1,47 @@
-name: CI
+name: CI Test_LCD
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10]
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install poetry
+        run: | 
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Add poetry to PATH
+        run: |
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Update lock file
+        run: | 
+          poetry update --lock
 
       - name: Instala dependencias
         run: |
           poetry install
+      
+      - name: Update dependencies
+        run: |
+          poetry update
+
       - name: Ejecuta pruebas
         run: |
-          poetry run pytest
+          poetry run test
